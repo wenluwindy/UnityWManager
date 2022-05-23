@@ -14,7 +14,7 @@
 
     ④Music：bgm,同时只能播放一个
 
-TODO:正在制作声音管理器的API
+声音管理器的API文档：
 
 
 TODO:
