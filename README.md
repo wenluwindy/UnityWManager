@@ -14,7 +14,7 @@
 
     ④Music：bgm,同时只能播放一个
 
-声音管理器的API文档：
+声音管理器的API文档：<https://github.com/wenluwindy/UnityWManager/blob/main/%E6%96%87%E6%A1%A3/Soundmanager.md>
 
 
 TODO:
