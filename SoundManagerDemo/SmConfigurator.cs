@@ -6,6 +6,7 @@ using WManager;
 /// <summary>
 /// 全局音频混合器
 /// </summary>
+[AddComponentMenu("管理器/全局音频混合器")]
 public class SmConfigurator : MonoBehaviour
 {
     [FormerlySerializedAs("effectAudioMixer")]

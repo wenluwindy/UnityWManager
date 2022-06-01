@@ -9,6 +9,7 @@ using WManager;
 /// <summary>
 /// 全局音量控制器
 /// </summary>
+[AddComponentMenu("管理器/全局音量控制器")]
 public class GlobalVolumeController : MonoBehaviour
 {
     [Header("总音量")]
