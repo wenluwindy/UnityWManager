@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using WManager;
@@ -9,6 +9,7 @@ using WManager;
 public class TestPauseAndResum : MonoBehaviour {
     private int lockNum = int.MaxValue;
     private Timer t;
+
     void Start () {
       t=  Timer.AddTimer(5, "TestForPauseAndResum",true).OnUpdated((v)=> 
         {
@@ -23,7 +24,10 @@ public class TestPauseAndResum : MonoBehaviour {
         {
             Debug.Log("TestForPause_5秒_计时完成！");
         });
-        Timer.AddTimer(3, "123",true).OnCompleted(qq);
+        
+        Timer.AddTimer(10, "123",false).OnCompleted(ST).OnUpdated((a)=> OnUpdate_test(a));
+
+        t.OnCompleted(ST).OnUpdated((a)=> OnUpdate_test(a));
     }
 	
 	// Update is called once per frame
@@ -31,6 +35,7 @@ public class TestPauseAndResum : MonoBehaviour {
         
 
     }
+    //暂停
     private void OnEnable()
     {
         //if (null!=t)t.IsPause = false; 
@@ -38,14 +43,21 @@ public class TestPauseAndResum : MonoBehaviour {
         Timer.ResumTimer("TestForPauseAndResum");
 
     }
+    //恢复
     private void OnDisable()
     {
         //if (null!=t)t.IsPause = true; 
         //或者使用这句：
         Timer.PauseTimer("TestForPauseAndResum");
     }
-    void qq()
+    void ST()
     {
-        Debug.Log("ceshi");
+        Debug.Log("删除计时器ST()");
+        Timer.DelTimer(ST);
+    }
+    void OnUpdate_test(float index)
+    {
+        Debug.Log("删除计时器UP()");
+        Timer.DelTimer(OnUpdate_test);
     }
 }

@@ -3,8 +3,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//————————————————————计时器功能——————————————————————
+//创建定时器单例：private Timer t;
+//添加计时器：t.AddTimer(定时时长,"定时器名称",是否循环)
+//暂停计时器：t.PauseTimer("定时器名称")
+//恢复计时器：t.ResumTimer("定时器名称")
+//删除计时器: t.DelTimer("定时器名称"/定义的定时器/方法名)
+//定时结束后执行一次方法：t.OnCompleted(定义的方法)
+//定时结束后每帧执行方法：t.OnUpdated(定义的方法组)
+//————————————————————————————————————————————————————
+
 namespace WManager
 {
+    /// <summary>
+    /// 计时器
+    /// </summary>
     public class Timer
     {
         static List<Timer> timers = new List<Timer>();
@@ -39,8 +52,12 @@ namespace WManager
         private bool _isFinish = false; //计时器是否结束
         private bool _isPause = false; //计时器是否暂停
 
+        /// <summary>
+        /// 是否输出Debug信息
+        /// </summary>
         private static bool showLog = true;
         public static bool ShowLog { set { showLog = value; } }//确认是否输出Debug信息
+
         /// <summary>
         /// 暂停计时器
         /// </summary>
@@ -108,7 +125,7 @@ namespace WManager
             {
                 if (_isPause)
                 {
-                    cachedTime = CurrentTime-timePassed; 
+                    cachedTime = CurrentTime - timePassed;
                     _isPause = false;
                 }
                 else
